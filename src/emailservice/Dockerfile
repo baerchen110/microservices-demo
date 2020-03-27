@@ -15,14 +15,14 @@ FROM base as final
 # Enable unbuffered logging
 ENV PYTHONUNBUFFERED=1
 # Enable Profiler
-ENV ENABLE_PROFILER=1
+ENV ENABLE_PROFILER=0
 
 RUN apt-get -qq update \
     && apt-get install -y --no-install-recommends \
         wget
 
 # Download the grpc health probe
-RUN GRPC_HEALTH_PROBE_VERSION=v0.2.0 && \
+RUN GRPC_HEALTH_PROBE_VERSION=v0.3.2 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
 
